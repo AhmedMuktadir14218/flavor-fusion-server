@@ -11,8 +11,7 @@ app.use(express.json());
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.swu9d.mongodb.net/?retryWrites=true&w=majority`;
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jgfdfab.mongodb.net/?retryWrites=true&w=majority`;
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.fgbafng.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.jgfdfab.mongodb.net/?retryWrites=true&w=majority`;
 console.log(uri)
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -31,7 +30,7 @@ async function run() {
     await client.connect();
 
     const menuCollection = client.db("Flavour").collection("menu");
-    const reviewCollection = client.db("Flavour").collection("reviews");
+    const reviewCollection = client.db("flavour-fusion").collection("reviews");
 
     app.get('/menu', async(req, res) =>{
         const result = await menuCollection.find().toArray();
